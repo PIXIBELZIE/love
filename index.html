@@ -314,33 +314,19 @@
     </div>
 
     <script>
-        // --- 1. PASSWORD CHECKER ---
+        // --- 1. PASSWORD CHECKER (ALWAYS UNLOCKS) ---
         function checkPassword() {
-            const input = document.getElementById('password-input').value;
-            const errorMsg = document.getElementById('error-msg');
+            // MODIFIED: This function now ignores what is typed and always opens
+            // It just creates the animation to fade out the login screen
+            document.getElementById('login-screen').style.opacity = '0';
             
-            // Fixed: Set secret password to Marvani
-            const secretCode = "Marvani"; 
-
-            // Fixed: Added .toLowerCase() to secretCode so "Marvani" matches "marvani" or "Marvani"
-            if (input.toLowerCase() === secretCode.toLowerCase()) {
-                // Hide login, Show content
-                document.getElementById('login-screen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('login-screen').style.display = 'none';
-                    const mainContent = document.getElementById('main-content');
-                    mainContent.style.display = 'block';
-                    // Trigger reflow to enable transition
-                    setTimeout(() => mainContent.style.opacity = '1', 50);
-                }, 1000);
-            } else {
-                errorMsg.style.display = 'block';
-                // Shake animation for wrong password
-                const box = document.querySelector('.login-box');
-                box.style.transform = 'translateX(10px)';
-                setTimeout(() => box.style.transform = 'translateX(-10px)', 100);
-                setTimeout(() => box.style.transform = 'translateX(0)', 200);
-            }
+            setTimeout(() => {
+                document.getElementById('login-screen').style.display = 'none';
+                const mainContent = document.getElementById('main-content');
+                mainContent.style.display = 'block';
+                // Trigger reflow to enable transition
+                setTimeout(() => mainContent.style.opacity = '1', 50);
+            }, 1000);
         }
 
         // --- 2. OPEN LETTER ---
