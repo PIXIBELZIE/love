@@ -319,10 +319,11 @@
             const input = document.getElementById('password-input').value;
             const errorMsg = document.getElementById('error-msg');
             
-            // CHANGE THIS: Set your secret password here
+            // Fixed: Set secret password to Marvani
             const secretCode = "Marvani"; 
 
-            if (input.toLowerCase() === secretCode) {
+            // Fixed: Added .toLowerCase() to secretCode so "Marvani" matches "marvani" or "Marvani"
+            if (input.toLowerCase() === secretCode.toLowerCase()) {
                 // Hide login, Show content
                 document.getElementById('login-screen').style.opacity = '0';
                 setTimeout(() => {
@@ -412,9 +413,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
